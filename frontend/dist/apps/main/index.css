@@ -1,0 +1,16 @@
+/* .wrapper{
+    display: flex;
+    height: 100%;
+} */
+
+.carousel-caption{
+    background-color: rgba(44, 44, 44, 0.557);
+}
+
+.price{
+    font-size: 20px;
+    color: white;
+
+}
+
+
