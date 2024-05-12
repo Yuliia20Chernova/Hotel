@@ -1,8 +1,8 @@
-/* .wrapper{
+/* /* .wrapper{
     display: flex;
     height: 100%;
 } */
-
+/* 
 .carousel-caption{
     background-color: rgba(44, 44, 44, 0.557);
 }
@@ -13,4 +13,7 @@
 
 }
 
-
+body,main{
+    height: 100%;
+    
+} */ 

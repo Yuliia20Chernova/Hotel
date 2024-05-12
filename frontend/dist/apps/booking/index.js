@@ -1,25 +1,35 @@
 let btn = document.getElementById('add_booking');
-let room = document.getElementById('room_name');
-let price = document.getElementById('price');
-let desc = document.getElementById('description');
+let firstName = document.getElementById('first_name');
+let lastName = document.getElementById('last_name');
+let email = document.getElementById('email');
+let checkIn = document.getElementById('check_in');
+let checkOut = document.getElementById('check_out');
+let numberOfGuest = document.getElementById('people')
+let room = document.getElementById('rooms');
+let message = document.getElementById('message');
+let phone = document.getElementById('phone');
 
 btn.addEventListener('click', function(){
 
     let data ={
+        first_name: firstName.value,
+        last_name: lastName.value,
+        email: email.value,
+        phone: phone.value,
+        check_in: checkIn.value,
+        check_out: checkOut.value,
+        number_of_guests: numberOfGuest.value,
         room: room.value,
-        price: price.value,
-        description: desc.value
+        message: message.value
+        
     }
 
     enableDisableInputs( true )
 
 
-    fetch('/booking',{
+    fetch('http://localhost:3000/booking/add',{
         method:'post',
-        headers:{
-            'Content-Type':'application/json'
-        },
-
+        headers:{'Content-Type':'application/json'},
         body: JSON.stringify( data )
     })
     .then( function(res){
@@ -31,18 +41,23 @@ btn.addEventListener('click', function(){
 
 
         // Empty all inouts
-        room.value = '';
-        price.value = '';
-        desc.value = '';
+        firstName.value = '';
+        lastName.value = '';
+        email.value = '';
+        checkIn.value = '';
+        checkOut.value = '';
+        numberOfGuest.value = '';
+        message.value = '';
+        phone.value = ''
 
         // Focus the first input
-        title.focus();
+        firstName.focus();
 
         // Alert the user
         alert('Order completed');
 
 
-        console.log(data);
+        // console.log(data);
     })
     .catch( function(err){
 
@@ -59,11 +74,15 @@ btn.addEventListener('click', function(){
 
 function enableDisableInputs( value )
 {
-    btn.disabled = value;
+    firstName.disabled = value;
+    lastName.disabled = value;
+    email.disabled = value;
+    numberOfGuest.disabled = value;
+    checkIn.disabled = value;
+    checkOut.disabled = value;
     room.disabled = value;
-    price.disabled = value;
-    desc.disabled = value;
+    message.disabled = value;
+    phone.disabled = value
 }
 
-
-let arr = [1,2,3,4];
+let arr = [1,2,3,4,5,6,7,8,9];

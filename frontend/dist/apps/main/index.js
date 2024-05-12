@@ -1,19 +1,21 @@
-let btn = document.getElementById('order');
-let room = document.getElementById('room_name');
-let price = document.getElementById('price');
-let desc = document.getElementById('description');
+let btn = document.getElementById('send_message');
+let user = document.getElementById('user_name');
+let email = document.getElementById('email');
+let subject = document.getElementById('subject');
+let message = document.getElementById('message');
 
 btn.addEventListener('click', function(){
 
     let data ={
-        room: room.value,
-        price: price.value,
-        description: desc.value
+        user_name: user.value,
+        email: email.value,
+        subject: subject.value,
+        message: message.value
     }
-    enableDisableInputs( true )
+    // enableDisableInputs( true )
 
 
-    fetch('/booking',{
+    fetch('http://localhost:3000/main/contact',{
         method:'post',
         headers:{
             'Content-Type':'application/json'
@@ -27,8 +29,16 @@ btn.addEventListener('click', function(){
     .then( function(data){
 
                // Alert the user
-        alert('Task added successfully');
+        alert('Message sended successfully');
 
+        enableDisableInputs( false )
+
+        user.value = '';
+        email.value = '';
+        subject.value = '';
+        message.value = '';
+
+        user.focus();
 
         console.log(data);
     })
@@ -37,8 +47,21 @@ btn.addEventListener('click', function(){
               // Alert the user
         alert('An error happend, please try again later');
 
+        enableDisableInputs( false )
+
         console.log(err);
     })
     
 });
+
+function enableDisableInputs( value )
+{
+    user.disabled = value;
+    email.disabled = value;
+    subject.disabled = value;
+    message.disabled = value;
+    
+}
+
+let arr = [1,2,3,4];
 
